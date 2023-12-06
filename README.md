@@ -1,7 +1,7 @@
 # over-the-wire-bandit
 Documentaion for the Bandit OverTheWire Levels
 
-##Level 0
+## Level 0
 
 Using ssh command to connect to the host on port 2220 with username bandit0. 
 ```bash
