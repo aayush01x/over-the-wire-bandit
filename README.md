@@ -90,11 +90,18 @@ $ cat ./inhere/-file07
 ```bash
 $ ssh bandit5@bandit.labs.overthewire.org -p 2220
 ```
-
 ```bash
 $ cd inhere
 $ find . -type f -size 1033c ! -executable -exec file '{}' \; | grep ASCII
 ```
+`-type f` is used to look at only files
+
+`-!-executable` is used to find non-executable files
+
+`-size 1033c` adds filter for files with size 1033bytes
+
+`-exec file '{}' \; | grep ASCII` is to execute the find command and then apply grep ASCII on it to search for Human Readable files.
+
 This gives the path of the file which follows the gien conditions. It shows that type of file is ASCII text, with very long lines. 
 
 ```./maybehere07/.file2: ASCII text, with very long lines (1000)```
@@ -112,6 +119,9 @@ $ ssh bandit6@bandit.labs.overthewire.org -p 2220
 ```bash
 $ find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
 ```
+`-find /` searches for files over the whole system.
+
+`2>/dev/null` is used to clear the output for folders on which access is denied
 
 Output: 
 `
@@ -129,6 +139,8 @@ $ ssh bandit7@bandit.labs.overthewire.org -p 2220
 ```bash
 $ cat data.txt | grep millionth
 ```
+`cat` reads the file `data.txt` and using `grep millionth`, it outputs the line which has millionth keyword in it. 
+
 Output: `millionth	TESKZC0XvTetK0S9xNwm25STk5iWrBvP`
 
 **Password**: TESKZC0XvTetK0S9xNwm25STk5iWrBvP
@@ -140,14 +152,18 @@ $ ssh bandit8@bandit.labs.overthewire.org -p 2220
 ```bash
 $ sort data.txt | uniq -u
 ```
+Because `uniq -u` checks only for consecutive lines. So, data.txt is sorted first and then `uniq -u` is applied to find the unique line.
+
 **Password**: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
 ## Level 9 → Level 10
 ```bash
 $ ssh bandit9@bandit.labs.overthewire.org -p 2220
 ```
 ```bash
-strings data.txt | grep ==
+$ strings data.txt | grep ==
 ```
+`strings` searches for human readable strings in the file `data.txt` and using `grep`, output shows the lines with `==` as a substring . We can look through the output to get required answer.
+
 Output: 
 ```
 x]T========== theG)"
