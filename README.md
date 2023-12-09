@@ -86,3 +86,73 @@ It can be now read using `cat`:
 $ cat ./inhere/-file07
 ```
 **Password** : lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+## Level 5 → Level 6
+```bash
+$ ssh bandit5@bandit.labs.overthewire.org -p 2220
+```
+
+```bash
+$ cd inhere
+$ find . -type f -size 1033c ! -executable -exec file '{}' \; | grep ASCII
+```
+This gives the path of the file which follows the gien conditions. It shows that type of file is ASCII text, with very long lines. 
+
+```./maybehere07/.file2: ASCII text, with very long lines (1000)```
+
+```bash
+$ cat ./maybehere07/.file2
+```
+**Password** : P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+
+## Level 6 → Level 7
+```bash
+$ ssh bandit6@bandit.labs.overthewire.org -p 2220
+```
+
+```bash
+$ find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
+```
+
+Output: 
+`
+/var/lib/dpkg/info/bandit7.password
+`
+```bash
+$ cat /var/lib/dpkg/info/bandit7.password
+```
+**Password**: z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+
+## Level 7 → Level 8
+```bash
+$ ssh bandit7@bandit.labs.overthewire.org -p 2220
+```
+```bash
+$ cat data.txt | grep millionth
+```
+Output: `millionth	TESKZC0XvTetK0S9xNwm25STk5iWrBvP`
+
+**Password**: TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+
+## Level 8 → Level 9
+```bash
+$ ssh bandit8@bandit.labs.overthewire.org -p 2220
+```
+```bash
+$ sort data.txt | uniq -u
+```
+**Password**: EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+## Level 9 → Level 10
+```bash
+$ ssh bandit9@bandit.labs.overthewire.org -p 2220
+```
+```bash
+strings data.txt | grep ==
+```
+Output: 
+```
+x]T========== theG)"
+========== passwordk^
+========== is
+========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+```
+**Password**: G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
