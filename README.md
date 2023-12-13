@@ -172,3 +172,78 @@ x]T========== theG)"
 ========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
 ```
 **Password**: G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+
+## bandit10 → bandit11
+
+
+```bash
+$ cat data.txt
+```
+
+```bash
+$ cat data.txt | base64 -d
+```
+
+## Level11 → Level12
+
+Using `cat` to read the file
+
+```bash
+$ cat data.txt
+```
+
+```bash
+$ cat data.txt | tr "A-Za-z" "N-ZA-Mn-za-m"
+```
+
+## Level12 →  Level13
+
+Using `xxd` with option -r to convert hexdump to data file
+
+```bash
+$ xxd -r data.txt > file
+```
+Using file option to find the archive type , renaming the original file with the respective archive extension and respectively used tar,gzip,bzip2 to decompress the file.
+
+```bash
+$ file [filename]
+
+$ mv [filename1] [filename2].[archiveType]
+
+$ tar -xf [filename].tar
+
+$ gzip -d [filename].gz 
+
+$ bzip2 -d [filename].bz
+```
+
+
+## Level13 →  Level14
+
+Retrieved ssh private keys and saved it under .ssh/id_rsa and Changed the file permission to 600
+
+```bash
+$ chmod 600 id_rsa
+```
+
+
+```bash
+$ ssh -i id_rsa Level14@Level.labs.overthewire.org -p 2220
+```
+
+
+## Level14 → Level15
+
+Using `nc` to connect to port 30000 using host as "localhost"
+
+```bash
+$ nc localhost 30000
+```
+
+## Level15 → Level16
+
+Using `openssl` connect to "localhost" at port 30001
+
+```bash
+$ openssl s_client -connect localhost:30001
+```
